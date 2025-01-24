@@ -1,22 +1,37 @@
 #include <stdio.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+    typedef struct {
+    int populacao, pontosTuristicos;
+    char numero[20];
+    float area, pib;
+    char codigo;
+    } carta;
+
+    void cadastro(carta *card){
+        printf("Por favor, digite o código do estado (A-H): ");
+        scanf(" %c", &card->codigo);
+        printf("Por favor, digite o número da cidade(0-4): ");
+        scanf("%s", card->numero);
+        printf("Por favor, digite o número da população: ");
+        scanf("%d", &card->populacao);
+        printf("Por favor, digite a area da cidade: ");
+        scanf("%f", &card->area);
+        printf("Por favor, digite o PIB per capita da cidade ");
+        scanf("%f", &card->pib);
+        printf("Por favor, digite o número de pontos turísticos na cidade: ");
+        scanf("%d", &card->pontosTuristicos);
+    }
 
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
-    
-    // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
-    // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-    
-    // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
+    carta varCarta;
+
+    cadastro(&varCarta);
+
+    printf("Código: %c-0%s \n", varCarta.codigo, varCarta.numero);
+    printf("População: %d \n", varCarta.populacao);
+    printf("Área em Km²: %.2f \n", varCarta.area);
+    printf("PIB per Capita: %.2f \n", varCarta.pib);
+    printf("Número de pontos turistícos: %d\n", varCarta.pontosTuristicos);
 
     return 0;
 }
