@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define maxCarta 32
-
+    //declaração de variáveis
     int contCard = 1, escolha, cartaIndice1, cartaIndice2, verif= 0, listarJ1, listarJ2, atri1, atri2, pontu1=0, pontu2=0;
 
     typedef struct { //estrutura das cartas
@@ -26,7 +26,7 @@
             printf("VITÓRIA DO JOGADOR 2\n");
         }
     }
-
+    //lista cartas do jogador 1
     void listarJ1Func(int *listarJ1){
         printf("Selecione a carta do jogador 1: \n");
         for (int c=1; c<contCard; c++){
@@ -38,7 +38,7 @@
             listarJ1Func(listarJ1);
         }  
     }
-
+        //lista cartas do jogador 2
         void listarJ2Func(int *listarJ2, int listarJ1){
         printf("Selecione a carta do jogador 2: \n");
         for (int c=1; c<contCard; c++){
@@ -51,7 +51,7 @@
         }  
     }
 
-
+    // cadastro de cartas
     void cadastro(carta *card){
         do{
         printf("Por favor, digite o código do estado (A-H): ");
@@ -64,7 +64,7 @@
             scanf("%d", &card->numero);
         }
         for (int i=0; i<contCard; i++){
-            if (varCarta[i].codigo == card->codigo && varCarta[i].numero == card->numero){
+            if (varCarta[i].codigo == card->codigo && varCarta[i].numero == card->numero){ // para impedir códigos repetidos
                 printf("código %c-0%d repetido, por favor, digite um número diferente!\n", card->codigo, card->numero);
                 verif = 1;
                 break;
@@ -83,14 +83,14 @@
             scanf("%f", &card->pib);
             printf("Por favor, digite o número de pontos turísticos na cidade: ");
             scanf("%d", &card->pontosTuristicos);
-            card->densidade=card->populacao/card->area;
-            card->pibPerC=card->pib/card->populacao;
+            card->densidade=card->populacao/card->area; //calculo da densidade
+            card->pibPerC=card->pib/card->populacao; //calculo do pib per capita
             contCard++;
     }
 
-    void selAtri(int *atri1, int *atri2){
+    void selAtri(int *atri1, int *atri2){ //selecionar o atributo para comparar
 
-        printf("Selecione o atributo que gostaria de comparar: ");
+        printf("Selecione o atributo que gostaria de comparar: \n");
         printf("[1] População\n");
         printf("[2] Área em Km²\n");
         printf("[3] PIB\n");
@@ -125,6 +125,7 @@
         printf("Número de pontos turistícos: %d\n", varCarta[indice2].pontosTuristicos);
         printf("Densidade demográfica: %.2f hab/km²\n", varCarta[indice2].densidade);
         printf("PIB per capita: %.2f R$/hab\n", varCarta[indice2].pibPerC);
+        printf("---------------------------------------------------------------\n");
     }
 
     void compararCartas(int atributo, int carta1, int carta2, int *pont1, int *pont2){
@@ -191,13 +192,13 @@
 }
 }
 
-    void menu(){
-        printf("========================================");
-        printf("= Por favor, escolha uma das opções:   =");
-        printf("= [1] Cadastrar uma carta              =");
-        printf("= [2] Comparar cartas                  =");
-        printf("= [3] Finalizar programa               =");
-        printf("========================================");
+    void menu(){ // mostra o menu
+        printf("======================================== \n");
+        printf("= Por favor, escolha uma das opções:   = \n");
+        printf("= [1] Cadastrar uma carta              = \n");
+        printf("= [2] Comparar cartas                  = \n");
+        printf("= [3] Finalizar programa               = \n");
+        printf("======================================== \n");
         scanf("%d", &escolha);
         switch(escolha){
             case 1:
